@@ -1,6 +1,6 @@
 "use client";
 
-import ScrollReveal from "./ScrollReveal";
+import ScrollReveal from "./scrollReveal";
 
 export default function AboutText() {
   return (
