@@ -49,7 +49,7 @@ export function ScrollReveal({
     offset: ["start end", "end start"],
   });
 
-  // Rotation effect on scroll
+
   const rotation = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
