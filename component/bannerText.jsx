@@ -9,7 +9,7 @@ export default function BannerText() {
       fontWeight="font-bold"
       color="text-white"
       align="center"
-      className="mb-4 text-[28px] md:text-[32px] lg:text-5xl">
+      className="mb-4 text-[28px] md:text-[32px] lg:text-[55px]">
       Reliable Truck Rental & Transport Services
     </TypingText>
   );

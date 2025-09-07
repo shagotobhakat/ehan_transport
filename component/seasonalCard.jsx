@@ -32,19 +32,18 @@ const SeasonCard = ({
       )}
 
       {/* Black Overlay */}
-      <div className="absolute inset-0 bg-[#0000009c] transition duration-500 group-hover:bg-opacity-50"></div>
+      <div className="absolute inset-0 bg-[#000000ba] transition duration-500 group-hover:bg-opacity-50"></div>
 
       {/* Title + Subtitle */}
-      <div className="relative z-10 space-y-2 md:absolute sm:bottom-20 md:bottom-40 lg:bottom-20">
-        <h2 className="text-xl font-bold text-white">{title}</h2>
-        {subtitle && <p className="text-sm text-gray-300">{subtitle}</p>}
+      <div className="relative z-10 space-y-2 md:absolute sm:bottom-20 md:bottom-40 lg:bottom-25">
+        <h2 className="text-xl lg:text-2xl font-bold text-white">{title}</h2>
+        {subtitle && <p className="text-md text-gray-300">{subtitle}</p>}
       </div>
 
       {/* Description */}
       <div
         className={cn(
-          "z-10 relative mt-4 text-md text-white transition-all duration-500",
-          // Always visible on mobile & tablet, animated on desktop (lg+)
+          "z-10 relative mt-4 text-md lg:text-xl text-white transition-all duration-500",
           "opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-6 lg:group-hover:opacity-100 lg:group-hover:translate-y-0"
         )}
       >

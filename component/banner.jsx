@@ -26,7 +26,7 @@ export default function Banner() {
 
         <div className="relative z-10 text-center text-white items-center">
           <BannerText />
-          <p className="mb-6 text-xl text-center">
+          <p className="mb-6 text-xl md:text-xl lg:text-2xl text-center">
             Affordable, safe, and on-time delivery for your business or personal
             needs.
           </p>

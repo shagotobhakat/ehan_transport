@@ -12,6 +12,7 @@ export default function LoadingScreen() {
               fill="none"
               viewBox="0 0 198 93"
               className="trucksvg">
+              {/* Truck Body */}
               <path
                 strokeWidth="3"
                 stroke="#282828"
@@ -70,6 +71,28 @@ export default function LoadingScreen() {
                 y="84"
                 x="1"
               />
+
+              {/* 🚛 Inserted Text Inside Truck */}
+              <text
+                x="67"
+                y="30"
+                textAnchor="middle"
+                fill="#282828"
+                fontSize="15"
+                fontWeight="bold"
+                >
+                Ehan Transport
+              </text>
+              <text
+                x="67"
+                y="50"
+                textAnchor="middle"
+                fill="#282828"
+                fontSize="15"
+                fontWeight="bold"
+                >
+                Egency
+              </text>
             </svg>
           </div>
 

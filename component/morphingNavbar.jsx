@@ -205,7 +205,7 @@ const MorphingNavigation = ({
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0 }}
                     transition={{ delay: i * 0.1 }}
-                    className="px-2 py-2 text-sm font-bold tracking-wide flex items-center">
+                    className="px-2 py-2 text-[15px] font-bold tracking-wide flex items-center">
                     {link.icon && (
                       <span className="mr-2 inline-block text-neutral-800 dark:text-neutral-800">{link.icon}</span>
                     )}

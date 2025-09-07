@@ -5,8 +5,6 @@ body {
     padding: 0;
     margin: 0;
     outline: 0;
-    font-family: 'Archivo Narrow',
-        sans-serif;
 }
 
 
@@ -232,3 +230,34 @@ body {
 
 
 /*----------- loader part end -----------*/
+
+
+/*----------- Scrollbar part Start -------------*/
+
+body {
+    --sb-track-color: #F04448;
+    --sb-thumb-color: #0C0A14;
+    --sb-size: 12px;
+}
+
+body::-webkit-scrollbar {
+    width: var(--sb-size)
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+
+
+}
+
+@supports not selector(::-webkit-scrollbar) {
+    body {
+        scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    }
+}
+
+/*----------- Scrollbar part End -------------*/
