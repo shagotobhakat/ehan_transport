@@ -6,10 +6,10 @@ export default function AboutCard() {
   return (
     <OrbitCard className="mt-20">
       <div className="flex flex-col items-center text-center">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+        <h2 className="text-2xl font-bold text-white dark:text-white mb-1">
           Engr. Md. Saroar Alam
         </h2>
-        <p className="text-xl text-gray-600 dark:text-gray-300 mb-4">
+        <p className="text-xl text-white dark:text-white mb-4">
           Proprietor
         </p>
         <Image

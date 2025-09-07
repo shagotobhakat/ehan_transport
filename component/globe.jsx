@@ -1,13 +1,13 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import createGlobe from "cobe";
-import { cn } from "../lib/utils";
+import { cn } from "../lib/utils"; // Tailwind classnames helper
 
+// Utility: Convert hex to normalized RGB
 const hexToRgbNormalized = (hex) => {
   let r = 0,
     g = 0,
     b = 0;
-
   const cleanHex = hex.startsWith("#") ? hex.slice(1) : hex;
 
   if (cleanHex.length === 3) {
@@ -73,8 +73,8 @@ const Globe = ({
         globeRef.current = null;
       }
 
-      const rect = canvas.getBoundingClientRect();
-      const size = Math.min(rect.width, rect.height);
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const size = Math.min(rect.width, rect.height) || 300; // ✅ fallback for mobile
       const devicePixelRatio = window.devicePixelRatio || 1;
       const internalWidth = size * devicePixelRatio;
       const internalHeight = size * devicePixelRatio;
@@ -109,6 +109,7 @@ const Globe = ({
       });
     };
 
+    // ---- Mouse Events ----
     const onMouseDown = (e) => {
       isDragging.current = true;
       lastMouseX.current = e.clientX;
@@ -145,24 +146,59 @@ const Globe = ({
       }
     };
 
+    // ---- Touch Events ----
+    const onTouchStart = (e) => {
+      isDragging.current = true;
+      lastMouseX.current = e.touches[0].clientX;
+      lastMouseY.current = e.touches[0].clientY;
+    };
+
+    const onTouchMove = (e) => {
+      if (isDragging.current) {
+        const deltaX = e.touches[0].clientX - lastMouseX.current;
+        const deltaY = e.touches[0].clientY - lastMouseY.current;
+        const rotationSpeed = 0.005;
+
+        phiRef.current += deltaX * rotationSpeed;
+        thetaRef.current = Math.max(
+          -Math.PI / 2,
+          Math.min(Math.PI / 2, thetaRef.current - deltaY * rotationSpeed)
+        );
+
+        lastMouseX.current = e.touches[0].clientX;
+        lastMouseY.current = e.touches[0].clientY;
+      }
+    };
+
+    const onTouchEnd = () => {
+      isDragging.current = false;
+    };
+
     initGlobe();
 
+    // Attach listeners
     canvas.addEventListener("mousedown", onMouseDown);
     canvas.addEventListener("mousemove", onMouseMove);
     canvas.addEventListener("mouseup", onMouseUp);
     canvas.addEventListener("mouseleave", onMouseLeave);
+
+    canvas.addEventListener("touchstart", onTouchStart, { passive: true });
+    canvas.addEventListener("touchmove", onTouchMove, { passive: true });
+    canvas.addEventListener("touchend", onTouchEnd);
 
     const handleResize = () => initGlobe();
     window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      if (canvas) {
-        canvas.removeEventListener("mousedown", onMouseDown);
-        canvas.removeEventListener("mousemove", onMouseMove);
-        canvas.removeEventListener("mouseup", onMouseUp);
-        canvas.removeEventListener("mouseleave", onMouseLeave);
-      }
+      canvas.removeEventListener("mousedown", onMouseDown);
+      canvas.removeEventListener("mousemove", onMouseMove);
+      canvas.removeEventListener("mouseup", onMouseUp);
+      canvas.removeEventListener("mouseleave", onMouseLeave);
+      canvas.removeEventListener("touchstart", onTouchStart);
+      canvas.removeEventListener("touchmove", onTouchMove);
+      canvas.removeEventListener("touchend", onTouchEnd);
+
       if (globeRef.current) {
         globeRef.current.destroy();
         globeRef.current = null;
@@ -181,13 +217,14 @@ const Globe = ({
   ]);
 
   return (
-    <div id="about"
+    <div
+      id="about"
       className={cn(
         "flex items-center justify-center z-[10] mx-auto mt-10",
         className
       )}
       style={{
-        width: "auto",
+        width: "100%",
         height: "auto",
         display: "flex",
         alignItems: "center",
@@ -196,9 +233,8 @@ const Globe = ({
       }}>
       <canvas
         ref={canvasRef}
+        className="w-[16rem] h-[16rem] sm:w-[20rem] sm:h-[20rem]"
         style={{
-          width: "20rem",
-          height: "20rem",
           aspectRatio: "1",
           display: "block",
           cursor: "grab",

@@ -32,7 +32,7 @@ const SeasonCard = ({
       )}
 
       {/* Black Overlay */}
-      <div className="absolute inset-0 bg-[#000000ba] transition duration-500 group-hover:bg-opacity-50"></div>
+      <div className="absolute inset-0 bg-[#000000b0] transition duration-500 group-hover:bg-opacity-50"></div>
 
       {/* Title + Subtitle */}
       <div className="relative z-10 space-y-2 md:absolute sm:bottom-20 md:bottom-40 lg:bottom-25">
