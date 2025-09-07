@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Globe from "./globe";
 
 export default function Client() {
   return (
-    <div className="bg-neutral-800 dark:bg-neutral-800 pt-30 pb-30">
+    <div className="bg-neutral-800 dark:bg-neutral-800 pt-30 pb-0 lg:pb-30">
       <div
         className="grid grid-cols-3 gap-6 place-items-center
         xl:grid-rows-1 xl:grid-cols-3
@@ -67,6 +68,17 @@ export default function Client() {
           </div>
         </motion.div>
       </div>
+      <Globe
+        className="z-30"
+        dark={false}
+        scale={1.1}
+        diffuse={1.5}
+        mapSamples={60000}
+        mapBrightness={5}
+        baseColor="#1E90FF"
+        markerColor="#FF6347"
+        glowColor="#00FFFF"
+      />
     </div>
   );
 }

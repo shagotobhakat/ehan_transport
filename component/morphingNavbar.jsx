@@ -269,7 +269,7 @@ const MorphingNavigation = ({
                     key={link.id}
                     href={link.href}
                     onClick={(e) => handleLinkClick(link, e)}
-                    className="font-bold text-lg tracking-wide lowercase hover:scale-105 transition-transform flex items-center">
+                    className="font-bold text-lg tracking-wide hover:scale-105 transition-transform flex items-center">
                     {link.icon && (
                       <span className="inline-block mr-3">{link.icon}</span>
                     )}

@@ -12,7 +12,7 @@ export default function Footer() {
           delay={150}
           animateBy="words"
           direction="top"
-          className="text-md justify-center text-center text-white font-semibold"
+          className="text-[18px] justify-center text-center text-white font-semibold"
           stepDuration={0.4}
         />
       </div>
